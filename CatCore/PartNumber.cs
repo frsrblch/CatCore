@@ -52,7 +52,7 @@ namespace CatCore
         {
             if (value is null)
             {
-                throw new ArgumentNullException(nameof(value));
+                return Enumerable.Empty<PartNumber>();
             }
 
             return Pattern

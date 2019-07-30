@@ -143,7 +143,6 @@ namespace CatCoreTests
         {
             var result = PartNumber.Parse(RemanPN);
 
-            Assert.True(result.IsOkay);
             Assert.True(result.Contains(new PartNumber(RemanPN)));
         }
 
@@ -152,7 +151,6 @@ namespace CatCoreTests
         {
             var result = PartNumber.Parse(HyphenatedRemanPN);
 
-            Assert.True(result.IsOkay);
             Assert.True(result.Contains(new PartNumber(RemanPN)));
         }
 
