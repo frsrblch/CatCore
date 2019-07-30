@@ -88,12 +88,8 @@ namespace CatCore
 
         public string ToText()
         {
-            var sb = new StringBuilder(8);
-            int midpoint = _value.Length - 4;
-            sb.Append(_value, 0, midpoint);
-            sb.Append('-');
-            sb.Append(_value, midpoint, 4);
-            return sb.ToString();
+            var n = _value.Length - 4;
+            return $"{_value.Substring(0, n)}-{_value.Substring(n)}";
         }
 
         public static bool operator ==(PartNumber p1, PartNumber p2) => p1.Equals(p2);
