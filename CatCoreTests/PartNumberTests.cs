@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 using Result;
-using CatCore;
+using Cat;
 using System.Linq;
 
 namespace CatCoreTests

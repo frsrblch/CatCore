@@ -7,8 +7,8 @@
     <ProjectGuid>{1550CDE4-484A-4A2E-8705-B8C5236D5D60}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CatCore</RootNamespace>
-    <AssemblyName>CatCore</AssemblyName>
+    <RootNamespace>Cat</RootNamespace>
+    <AssemblyName>Cat</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MachineSerialPrefix.cs" />
+    <Compile Include="PartDescription.cs" />
+    <Compile Include="Extensions\PartDescriptionExtensions.cs" />
     <Compile Include="PartNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

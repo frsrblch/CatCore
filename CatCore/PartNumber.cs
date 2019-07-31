@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using Result;
 
-namespace CatCore
+namespace Cat
 {
-    public enum PartNumberParseError
-    {
-        InvalidInput
-    }
-
     public class PartNumber : IEquatable<PartNumber>
     {
         // Regex pattern examples:                            (  123-4567  |   1A-2345    |  20R-2345  )
         private readonly static Regex Pattern = new Regex(@"\b(\d{3}-?\d{4}|\d[A-Z]-?\d{4}|\d?0R-?\d{4})\b", RegexOptions.IgnoreCase);
-
-        public const int MinLength = 1;
-        public const int MaxLength = 30;
 
         private readonly string _value;
 
@@ -32,11 +23,11 @@ namespace CatCore
             _value = value.Replace("-", string.Empty).ToUpperInvariant();
         }
 
-        public static Result<PartNumber, Unit> Parse(string value)
+        public static Result<PartNumber, Error> Parse(string value)
         {
             if (value is null)
             {
-                return new Unit();
+                return new Error();
             }
 
             var match = Pattern.Match(value);
@@ -45,7 +36,7 @@ namespace CatCore
                 return new PartNumber(match.Value);
             }
 
-            return new Unit();
+            return new Error();
         }
 
         public static IEnumerable<PartNumber> ParseAll(string value)
