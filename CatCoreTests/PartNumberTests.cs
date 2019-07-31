@@ -271,5 +271,41 @@ namespace CatCoreTests
             Assert.Contains(new PartNumber("1A2345"), partNumbers);
             Assert.Contains(new PartNumber("20R3456"), partNumbers);
         }
+
+        [Fact]
+        public void Equals_GivenSameValue_ReturnsAsEqual()
+        {
+            var part = new PartNumber("1234567");
+            var same = new PartNumber("1234567");
+
+            Assert.Equal(part, same);
+        }
+
+        [Fact]
+        public void Equals_GivenDifferentValue_ReturnsAsEqual()
+        {
+            var part = new PartNumber("1234567");
+            var different = new PartNumber("2234567");
+
+            Assert.NotEqual(part, different);
+        }
+
+        [Fact]
+        public void GetHashCode_GivenSameValue_ReturnsAsEqual()
+        {
+            var part = new PartNumber("1234567").GetHashCode();
+            var same = new PartNumber("1234567").GetHashCode();
+
+            Assert.Equal(part, same);
+        }
+
+        [Fact]
+        public void GetHashCode_GivenDifferentValue_ReturnsAsEqual()
+        {
+            var part = new PartNumber("1234567").GetHashCode();
+            var different = new PartNumber("2234567").GetHashCode();
+
+            Assert.NotEqual(part, different);
+        }
     }
 }
