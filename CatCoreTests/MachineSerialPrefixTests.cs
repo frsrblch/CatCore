@@ -93,5 +93,23 @@ namespace CatCoreTests
 
             Assert.NotEqual(serial, different);
         }
+
+        [Fact]
+        public void GetHashCode_GivenEqual_AreEqual()
+        {
+            var serial = MachineSerialPrefix.Parse("LAJ").ValueOrThrow().GetHashCode();
+            var same = MachineSerialPrefix.Parse("LAJ").ValueOrThrow().GetHashCode();
+
+            Assert.Equal(serial, same);
+        }
+
+        [Fact]
+        public void GetHashCode_GivenNotEqual_AreNotEqual()
+        {
+            var serial = MachineSerialPrefix.Parse("LAJ").ValueOrThrow().GetHashCode();
+            var different = MachineSerialPrefix.Parse("SSP").ValueOrThrow().GetHashCode();
+
+            Assert.NotEqual(serial, different);
+        }
     }
 }
