@@ -54,6 +54,8 @@ namespace Cat
                 .ToList();
         }
 
+        public static implicit operator string(PartNumber number) => number.ToString();
+
         public bool Equals(PartNumber other)
         {
             return _value.Equals(other._value);

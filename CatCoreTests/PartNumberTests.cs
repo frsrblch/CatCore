@@ -233,7 +233,7 @@ namespace CatCoreTests
         {
             var result = PartNumber.Parse("0r1234");
 
-            Assert.True(result.Contains(new PartNumber("0R1234")));
+            Assert.Equal("0R1234", result.ValueOrThrow());
         }
 
         [Fact]
@@ -241,7 +241,7 @@ namespace CatCoreTests
         {
             var result = PartNumber.Parse(":1234567.");
 
-            Assert.True(result.Contains(new PartNumber("1234567")));
+            Assert.Equal("1234567", result.ValueOrThrow());
         }
 
         [Fact]
@@ -249,15 +249,23 @@ namespace CatCoreTests
         {
             var result = PartNumber.Parse(":1A2345.");
 
-            Assert.True(result.Contains(new PartNumber("1A2345")));
+            Assert.Equal("1A2345", result.ValueOrThrow());
         }
 
         [Fact]
-        public void Parse_RemanPartNumberWithPunctuation_IsOkay()
+        public void Parse_RemanPartNumberWithPunctuation1_IsOkay()
         {
             var result = PartNumber.Parse(":20R1234.");
 
-            Assert.True(result.Contains(new PartNumber("20R1234")));
+            Assert.Equal("20R1234", result.ValueOrThrow());
+        }
+
+        [Fact]
+        public void Parse_RemanPartNumberWithPunctuation2_IsOkay()
+        {
+            var result = PartNumber.Parse("20R1234");
+
+            Assert.Equal("20R1234", result.ValueOrThrow());
         }
 
         [Fact]
