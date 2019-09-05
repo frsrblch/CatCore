@@ -1,4 +1,4 @@
-﻿using Result;
+﻿using ResultType;
 using System;
 
 namespace Cat

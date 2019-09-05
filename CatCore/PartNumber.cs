@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Result;
+using ResultType;
 
 namespace Cat
 {
@@ -13,14 +13,14 @@ namespace Cat
 
         private readonly string _value;
 
-        internal PartNumber(string value)
+        public PartNumber(string value)
         {
             if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            _value = value.Replace("-", string.Empty).ToUpperInvariant();
+            _value = value.Replace("-", string.Empty).Trim().ToUpperInvariant();
         }
 
         public static Result<PartNumber, Error> Parse(string value)

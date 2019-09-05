@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Option, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Option\Option\bin\Release\netstandard2.0\Option.dll</HintPath>
+    </Reference>
     <Reference Include="Result">
       <HintPath>..\..\Result\Result\bin\Release\netstandard2.0\Result.dll</HintPath>
     </Reference>
@@ -57,11 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagramPosition.cs" />
     <Compile Include="MachineSerialPrefix.cs" />
     <Compile Include="PartDescription.cs" />
     <Compile Include="Extensions\PartDescriptionExtensions.cs" />
     <Compile Include="PartNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SisGroup.cs" />
+    <Compile Include="SisGroupExtensions.cs" />
+    <Compile Include="SisLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

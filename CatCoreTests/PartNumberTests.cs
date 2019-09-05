@@ -1,6 +1,6 @@
 ﻿using System;
 using Xunit;
-using Result;
+using ResultType;
 using Cat;
 using System.Linq;
 
