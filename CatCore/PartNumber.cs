@@ -9,7 +9,7 @@ namespace Cat
     public class PartNumber : IEquatable<PartNumber>
     {
         // Regex pattern examples:                            (  123-4567  |   1A-2345    |  20R-2345  )
-        private readonly static Regex Pattern = new Regex(@"\b(\d{3}-?\d{4}|\d[A-Z]-?\d{4}|\d?0R-?\d{4})\b", RegexOptions.IgnoreCase);
+        private readonly static Regex Pattern = new Regex(@"\b(\d{3}-?\d{4}|\d[A-Z]-?\d{4}|\d?\dR-?\d{4})\b", RegexOptions.IgnoreCase);
 
         private readonly string _value;
 
@@ -39,22 +39,26 @@ namespace Cat
             return new Error();
         }
 
-        public static IEnumerable<PartNumber> ParseAll(string value)
+        public static IReadOnlyCollection<PartNumber> ParseAll(string value)
         {
             if (value is null)
             {
-                return Enumerable.Empty<PartNumber>();
+                return new HashSet<PartNumber>();
             }
 
             return Pattern
                 .Matches(value)
                 .Cast<Match>()
                 .Select(match => new PartNumber(match.Value))
-                .Distinct()
-                .ToList();
+                .ToHashSet();
         }
 
         public static implicit operator string(PartNumber number) => number.ToString();
+
+        public bool IsRemanPart()
+        {
+            return _value.StartsWith("0R") || _value[2] == 'R';
+        }
 
         public bool Equals(PartNumber other)
         {

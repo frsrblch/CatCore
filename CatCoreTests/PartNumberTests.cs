@@ -315,5 +315,61 @@ namespace CatCoreTests
 
             Assert.NotEqual(part, different);
         }
+
+        [Fact]
+        public void IsRemanPart_LongPart_ReturnsFalse()
+        {
+            var part = new PartNumber("1234567");
+
+            Assert.False(part.IsRemanPart());
+        }
+
+        [Fact]
+        public void IsRemanPart_ShortPart_ReturnsFalse()
+        {
+            var part = new PartNumber("1R2345");
+
+            Assert.False(part.IsRemanPart());
+        }
+
+        [Fact]
+        public void IsRemanPart_ShortestRemanPart_ReturnsTrue()
+        {
+            var part = new PartNumber("0R2345");
+
+            Assert.True(part.IsRemanPart());
+        }
+
+        [Fact]
+        public void IsRemanPart_ShortRemanPart_ReturnsTrue()
+        {
+            var part = new PartNumber("10R2345");
+
+            Assert.True(part.IsRemanPart());
+        }
+
+        [Fact]
+        public void IsRemanPart_ShortRemanPart11_ReturnsTrue()
+        {
+            var part = new PartNumber("11R2345");
+
+            Assert.True(part.IsRemanPart());
+        }
+
+        [Fact]
+        public void FirstWordTest_GivenDash()
+        {
+            var desc = new PartDescription("BOLT-THREADED");
+
+            Assert.Equal("BOLT", desc.FirstWord());
+        }
+
+        [Fact]
+        public void FirstWordTest_GivenSpace()
+        {
+            var desc = new PartDescription("BOLT THREADED");
+
+            Assert.Equal("BOLT", desc.FirstWord());
+        }
     }
 }

@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiagramPosition.cs" />
+    <Compile Include="LinqExtensions.cs" />
     <Compile Include="MachineSerialPrefix.cs" />
+    <Compile Include="Part.cs" />
     <Compile Include="PartDescription.cs" />
     <Compile Include="Extensions\PartDescriptionExtensions.cs" />
     <Compile Include="PartNumber.cs" />

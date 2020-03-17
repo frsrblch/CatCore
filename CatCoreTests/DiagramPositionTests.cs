@@ -152,5 +152,13 @@ namespace CatCoreTests
 
             Assert.Equal(new DiagramPosition(0, 'R'), reman);
         }
+
+        [Fact]
+        public void IsParentPart()
+        {
+            Assert.False(new DiagramPosition(0).IsParentPosition());
+            Assert.False(new DiagramPosition(1, 'a').IsParentPosition());
+            Assert.True(new DiagramPosition(1).IsParentPosition());
+        }
     }
 }

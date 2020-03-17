@@ -110,5 +110,10 @@ namespace Cat
         }
 
         public static readonly DiagramPosition Reman = new DiagramPosition(0, 'R');
+
+        public bool IsParentPosition()
+        {
+            return Subposition.IsNone && Number > 0;
+        }
     }
 }

@@ -53,6 +53,21 @@ namespace Cat
 
         public override string ToString() => _value;
 
+        public string FirstWord()
+        {
+            char[] separators = new char[] { '-', ' ' };
+
+            int pos = _value.IndexOfAny(separators);
+            if (pos > 0)
+            {
+                return _value.Substring(0, pos);
+            }
+            else
+            {
+                return _value;
+            }
+        }
+
         public bool Equals(PartDescription other)
         {
             if (other is null)
@@ -74,5 +89,9 @@ namespace Cat
         }
 
         public bool Contains(string value) => _value.Contains(value.ToUpper());
+
+        public bool StartsWith(string value) => _value.StartsWith(value, StringComparison.OrdinalIgnoreCase);
+
+        public bool EndsWith(string value) => _value.EndsWith(value, StringComparison.OrdinalIgnoreCase);
     }
 }
